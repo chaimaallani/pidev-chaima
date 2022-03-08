@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+{% block gestion %}
+<li class="nav-item menu-open">
+    <a href="#" class="nav-link active" style="background-color: #E5BC4E;">
+        <i class="nav-icon fas fa-book"></i>
+        <p>
+            Gestion des commandes
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="ajouterCommande" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Ajouter une commande</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="listCommande" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Consulter les commandes</p>
+            </a>
+        </li>
+    </ul>
+
+    {% endblock %}
+    {% block titrePage %}
+    <div class="col-sm-6">
+        <h1 class="m-0"> Ajouter une commande</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"> Gestion des commandes</li>
+            <li class="breadcrumb-item active"> Ajouter une commande</li>
+        </ol>
+    </div><!-- /.col -->
+{% endblock %}
+
+    {% block body %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+    {{ form_errors(form.num_c) }}
+    {{ form_label(form.num_c,"num_c") }}
+    {{ form_widget(form.num_c)}}
+    {{ form_errors(form.date_c) }}
+    {{ form_label(form.date_c,"date_c") }}
+    {{ form_widget(form.date_c)}}
+    {{ form_errors(form.payement) }}
+    {{ form_label(form.payement,"payement") }}
+    {{ form_widget(form.payement)}}
+    {{ form_end(form) }}
+{% endblock %}

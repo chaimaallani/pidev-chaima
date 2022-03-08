@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+{% block gestion %}
+    <li class="nav-item menu-open">
+        <a href="#" class="nav-link active" style="background-color: #E5BC4E;">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Gestion des Livraisons
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="ajouterLivraison" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Ajouter une livraison</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+{% endblock %}
+{% block titrePage %}
+    <div class="col-sm-6">
+        <h1 class="m-0"> Consulter les Livraisons</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"> Gestion des Livraisons</li>
+            <li class="breadcrumb-item active"> Consulter les Livraisons</li>
+        </ol>
+    </div><!-- /.col -->
+{% endblock %}
+
+{% block body %}
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>date_h_l</td>
+            <td>adresse</td>
+            <td>num_tel</td>
+            <td>etat</td>
+        </tr>
+        {% for livraison in livraison %}
+            <tr>
+                <td>{{ livraison.id }}</td>
+                <td>{{ livraison.getDateHL()|date('d M Y')}}</td>
+                <td>{{ livraison.getAdresse() }}</td>
+                <td>{{ livraison.getNumTel() }}</td>
+                <td>{{ livraison.getEtat() }}</td>
+
+                <td> <a href="{{ path('supprimerLivraison', {'id': 'x'}) }}">Delete</a> </td>
+                <td> <a href="{{ path('modifierLivraison', {'id': 'x'}) }}">Update</a></td>
+                <td> <a href="{{ path('ImprimerLivraison', {'id': 'x'}) }}">Imprimer</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('ajouterLivraison') }}">ajouter une Livraison</a>
+{% endblock %}

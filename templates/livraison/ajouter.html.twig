@@ -1,0 +1,85 @@
+{% extends 'admin.html.twig' %}
+{% block links %}
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+{% endblock %}
+
+{% block content %}
+<li class="nav-item menu-open">
+    <a href="#" class="nav-link active" style="background-color: #E5BC4E;">
+        <i class="nav-icon fas fa-book"></i>
+        <p>
+            Gestion des Livraison
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="ajouterLivraison" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Ajouter une livraison</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="listLivraison" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Consulter les Livraisons</p>
+            </a>
+        </li>
+    </ul>
+
+    {% endblock %}
+    {% block titrePage %}
+        <div class="col-sm-6">
+            <h1 class="m-0"> Ajouter une Livraison</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"> Gestion des Livraisons</li>
+                <li class="breadcrumb-item active"> Ajouter une Livraison</li>
+            </ol>
+        </div><!-- /.col -->
+    {% endblock %}
+
+    {% block body %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+    {{ form_errors(form.date_h_l) }}
+    {{ form_label(form.date_h_l,"date") }}
+    {{ form_widget(form.date_h_l)}}
+    {{ form_errors(form.adresse) }}
+    {{ form_label(form.adresse,"adresse") }}
+    {{ form_widget(form.adresse)}}
+    {{ form_errors(form.num_tel) }}
+    {{ form_label(form.num_tel,"num_tel") }}
+    {{ form_widget(form.num_tel)}}
+    {{ form_errors(form.etat) }}
+    {{ form_label(form.etat,"etat") }}
+    {{ form_widget(form.etat)}}
+    {{form_rest(form)}}
+    {{ form_end(form) }}
+{% endblock %}
+
+    {% block js %}
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="../dist/js/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="../plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="../dist/js/pages/dashboard3.js"></script>
+{% endblock %}

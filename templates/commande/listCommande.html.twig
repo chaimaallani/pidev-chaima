@@ -1,0 +1,66 @@
+{% extends 'admin.html.twig' %}
+{% block gestion %}
+    <li class="nav-item menu-open">
+        <a href="#" class="nav-link active" style="background-color: #E5BC4E;">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                Gestion des Commandes
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="ajouterCommande" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Ajouter une commande</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="listCommande" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p> Consulter les commades</p>
+                </a>
+            </li>
+        </ul>
+
+    </li>
+
+
+{% endblock %}
+{% block titrePage %}
+    <div class="col-sm-6">
+        <h1 class="m-0"> Afficher les commandes</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"> Gestion des commandes</li>
+            <li class="breadcrumb-item active"> Afficher les commandes</li>
+        </ol>
+    </div><!-- /.col -->
+{% endblock %}
+
+{% block body %}
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>num_c</td>
+            <td>date_c</td>
+            <td>payement</td>
+        </tr>
+        {% for commande in commande %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.getNumC }}</td>
+                <td>{{ commande.getDateC()|date('d M Y')}}</td>
+                <td>{{ commande.getPayement }}</td>
+                <td> <a href="{{ path('supprimerCommande', {'id': 'x'}) }}">Delete</a> </td>
+                <td> <a href="{{ path('modifierCommande', {'id': 'x'}) }}">Update</a></td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('ajouterCommande') }}">ajouter une commande</a>
+{% endblock %}
